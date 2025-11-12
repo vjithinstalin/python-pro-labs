@@ -19,7 +19,7 @@
 ### Step 2: Save the File
 
 1. Rename the downloaded file to: `client_secret.json`
-2. Move it to: `c:\Users\jithinstalin\Projects\python-pro-labs\src\calendar_blocker\`
+2. Move it into your project under: `src/calendar_blocker/` (place it next to `calendar_blocker_oauth.py`)
 3. Your folder should now have:
    - `calendar_blocker_oauth.py`
    - `client_secret.json` (the file you just added)
@@ -27,9 +27,13 @@
 
 ### Step 3: Run the Script
 
-```bash
-cd c:\Users\jithinstalin\Projects\python-pro-labs\src\calendar_blocker\
-python calendar_blocker_oauth.py test.xlsx
+```powershell
+# From the project root
+python .\src\calendar_blocker\calendar_blocker_oauth.py .\src\calendar_blocker\test.xlsx
+
+# Or, from within the calendar_blocker folder
+cd .\src\calendar_blocker
+python .\calendar_blocker_oauth.py .\test.xlsx
 ```
 
 ### Step 4: Login When Prompted
