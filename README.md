@@ -34,11 +34,16 @@ python src/<project_name>.py
 ```
 python-pro-labs/
 │
-├── README.md
+├── README.md (main project documentation)
 │
 └── src/
-    ├── hello_world.py
-    ├── calculator.py
+    ├── hello_world/
+    │   ├── README.md
+    │   └── hello_world.py
+    │
+    ├── calculator/
+    │   ├── README.md
+    │   └── calculator.py
     │
     └── file_organizer/
         ├── README.md
@@ -52,11 +57,15 @@ python-pro-labs/
 ### 1. Hello World
 A simple introductory program that prints "Hello, World!" to demonstrate basic Python syntax.
 
-**File:** `src/hello_world.py`
+**Location:** `src/hello_world/`
 
 **Running the Program:**
 ```bash
-python src/hello_world.py
+# From hello_world folder
+python hello_world.py
+
+# From project root
+python src/hello_world/hello_world.py
 ```
 
 **Expected Output:**
@@ -64,12 +73,15 @@ python src/hello_world.py
 Hello, World!
 ```
 
+**Module Documentation:**
+See `src/hello_world/README.md` for detailed documentation.
+
 ---
 
 ### 2. Simple Calculator
 An interactive calculator application that performs basic arithmetic operations.
 
-**File:** `src/calculator.py`
+**Location:** `src/calculator/`
 
 **Features:**
 - ➕ Addition
@@ -81,17 +93,14 @@ An interactive calculator application that performs basic arithmetic operations.
 
 **Running the Program:**
 ```bash
-python src/calculator.py
+# From calculator folder
+python calculator.py
+
+# From project root
+python src/calculator/calculator.py
 ```
 
-**Usage:**
-1. Run the program
-2. Select an operation (1-5)
-3. Enter two numbers
-4. View the result
-5. Continue with more operations or select option 5 to exit
-
-**Example Output:**
+**Example Usage:**
 ```
 Simple Calculator
 ----------------------------------------
@@ -108,6 +117,9 @@ Enter first number: 10
 Enter second number: 5
 10.0 + 5.0 = 15.0
 ```
+
+**Module Documentation:**
+See `src/calculator/README.md` for detailed documentation.
 
 ---
 
@@ -143,14 +155,20 @@ An intelligent file organization system with automatic file categorization and s
 
 **Running Immediate Organization:**
 ```bash
-cd src/file_organizer
+# From file_organizer folder
 python organizer.py <directory_path>
+
+# From project root
+python src/file_organizer/organizer.py <directory_path>
 ```
 
 **Running Scheduled Organization:**
 ```bash
-cd src/file_organizer
+# From file_organizer folder
 python scheduler.py <directory_path> <frequency> <time>
+
+# From project root
+python src/file_organizer/scheduler.py <directory_path> <frequency> <time>
 ```
 
 **Examples:**
