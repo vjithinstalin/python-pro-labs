@@ -2,6 +2,10 @@
 
 A simple introductory program that demonstrates basic Python syntax and structure.
 
+**👤 Creator:** [vjithinstalin](https://github.com/vjithinstalin)
+
+---
+
 ## 📝 Description
 
 This is a beginner-friendly program that prints "Hello, World!" to the console. It demonstrates fundamental Python concepts including:

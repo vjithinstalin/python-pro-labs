@@ -2,6 +2,10 @@
 
 A complete file organization system with automatic file categorization and scheduling capabilities.
 
+**👤 Creator:** [vjithinstalin](https://github.com/vjithinstalin)
+
+---
+
 ## 📁 Files in This Module
 
 ### `organizer.py`

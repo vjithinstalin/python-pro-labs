@@ -2,6 +2,10 @@
 
 An interactive calculator application that performs basic arithmetic operations with error handling.
 
+**👤 Creator:** [vjithinstalin](https://github.com/vjithinstalin)
+
+---
+
 ## 📝 Description
 
 A command-line calculator that demonstrates fundamental programming concepts including:

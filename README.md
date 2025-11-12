@@ -2,6 +2,10 @@
 
 A collection of Python projects for learning and practice. This repository contains beginner-friendly projects that demonstrate fundamental Python concepts and practical applications.
 
+**👤 Creator:** [vjithinstalin](https://github.com/vjithinstalin)
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites

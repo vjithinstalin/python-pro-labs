@@ -1,5 +1,9 @@
 # File Organizer Scheduling Guide
 
+**👤 Creator:** [vjithinstalin](https://github.com/vjithinstalin)
+
+---
+
 This guide explains how to schedule the file organizer to run automatically at regular intervals.
 
 ## Method 1: Using Python Scheduler (Cross-Platform) ⭐ Recommended
