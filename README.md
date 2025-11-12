@@ -49,11 +49,16 @@ python-pro-labs/
     │   ├── README.md
     │   └── calculator.py
     │
-    └── file_organizer/
+    ├── file_organizer/
+    │   ├── README.md
+    │   ├── SCHEDULING_GUIDE.md
+    │   ├── organizer.py
+    │   └── scheduler.py
+    │
+    └── calendar_blocker/
         ├── README.md
-        ├── SCHEDULING_GUIDE.md
-        ├── organizer.py
-        └── scheduler.py
+        ├── EXAMPLE_TEMPLATE.txt
+        └── calendar_blocker.py
 ```
 
 ## Projects
@@ -229,6 +234,74 @@ See `src/file_organizer/README.md` for detailed module documentation.
 **Scheduling Documentation:**
 See `src/file_organizer/SCHEDULING_GUIDE.md` for comprehensive scheduling guide covering Windows Task Scheduler, Linux cron, and Python scheduler methods.
 
+---
+
+### 4. Google Calendar Blocker
+Automatically block time on Google Calendar based on schedules defined in an Excel file.
+
+**Location:** `src/calendar_blocker/`
+
+**Features:**
+- 📅 Read time blocks from Excel files
+- 🔗 Direct Google Calendar integration
+- 🔄 Support for recurring blocks (Daily, Weekly, Monthly)
+- 🎨 Custom event colors
+- ✅ Batch event creation
+- 📊 Detailed logging and error reporting
+- 🛡️ OAuth 2.0 authentication
+
+**Use Cases:**
+- Block focus time for deep work
+- Schedule recurring meeting prep time
+- Create team-wide no-meeting blocks
+- Automate lunch break scheduling
+- Block admin task time
+
+**Running the Program:**
+```bash
+# From calendar_blocker folder
+python calendar_blocker.py <excel_file>
+
+# From project root
+python src/calendar_blocker/calendar_blocker.py schedule.xlsx
+```
+
+**Excel File Format:**
+The Excel file requires these columns:
+- **Date** (YYYY-MM-DD format)
+- **Start Time** (HH:MM in 24-hour format)
+- **End Time** (HH:MM in 24-hour format)
+- **Title** (Event name)
+- **Description** (Optional)
+- **Recurring** (Daily, Weekly, Monthly, or blank)
+- **Color** (Optional - red, blue, green, etc.)
+
+**Example:**
+```
+Date        | Start Time | End Time | Title      | Recurring
+2025-01-15  | 09:00      | 10:00   | Focus Time | Daily
+2025-01-15  | 12:00      | 13:00   | Lunch      | Weekly
+```
+
+**Setup Requirements:**
+1. Install required packages:
+   ```bash
+   pip install openpyxl google-auth-oauthlib google-api-python-client python-dateutil
+   ```
+
+2. Set up Google Calendar API credentials:
+   - Create Google Cloud project
+   - Enable Calendar API
+   - Create service account
+   - Save credentials.json to `src/calendar_blocker/`
+
+3. Create Excel file with your calendar blocks
+
+4. Run the script!
+
+**Module Documentation:**
+See `src/calendar_blocker/README.md` for detailed documentation and examples.
+
 ## Requirements
 
 - Python 3.7 or higher
@@ -250,6 +323,7 @@ source .venv/bin/activate
 1. **Start with Hello World** - Understand basic Python syntax
 2. **Try the Calculator** - Learn functions, conditionals, and error handling
 3. **Use File Organizer** - Practice file I/O, modules, and command-line arguments
+4. **Explore Calendar Blocker** - Integrate with external APIs and Excel files
 
 ## 💡 Project Summary
 
@@ -258,6 +332,7 @@ source .venv/bin/activate
 | Hello World | Basic | Beginner | Print, main() |
 | Calculator | Interactive | Beginner | Functions, loops, conditionals |
 | File Organizer | Utility | Intermediate | File I/O, OS operations, CLI args |
+| Calendar Blocker | Integration | Intermediate | API integration, Excel parsing, authentication |
 
 ## 🎯 Next Steps
 

@@ -1,0 +1,30 @@
+Instructions for using this template:
+
+1. Create an Excel file with the following columns (headers):
+   - Date
+   - Start Time
+   - End Time
+   - Title
+   - Description (optional)
+   - Recurring (optional)
+   - Color (optional)
+
+2. Fill in your calendar blocks starting from row 2
+
+3. Date format: YYYY-MM-DD or MM/DD/YYYY (e.g., 2025-01-15)
+
+4. Time format: HH:MM in 24-hour format (e.g., 09:00, 14:30)
+
+5. Recurring options: Daily, Weekly, Monthly, or None (leave blank for no recurrence)
+
+6. Color options: red, blue, green, yellow, orange, purple, gray
+
+Example data:
+Date          | Start Time | End Time | Title           | Description        | Recurring | Color
+2025-01-15    | 09:00      | 10:00   | Focus Time      | Deep work session   | Daily     | blue
+2025-01-15    | 12:00      | 13:00   | Lunch Break     | Team lunch         | Weekly    | green
+2025-01-15    | 14:00      | 14:30   | Meeting Prep    | Prepare slides     |           | yellow
+2025-01-15    | 15:00      | 16:00   | Admin Time      | Email & tasks      | Daily     | orange
+
+Save this file as schedule.xlsx and run:
+  python calendar_blocker.py schedule.xlsx
