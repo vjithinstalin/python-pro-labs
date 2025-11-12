@@ -4,7 +4,7 @@ File Organizer Scheduler
 ================================================================================
 
 PURPOSE:
-    This script provides automated scheduling capabilities for the file_organizer.py
+    This script provides automated scheduling capabilities for the organizer.py
     script. It allows users to automatically organize files in a specified directory
     at regular intervals (hourly, daily, or weekly).
 
@@ -17,24 +17,24 @@ KEY FEATURES:
     - Graceful shutdown with Ctrl+C
 
 USAGE:
-    python file_organizer_scheduler.py <directory_path> [frequency] [time]
+    python scheduler.py <directory_path> [frequency] [time]
     
 EXAMPLES:
     # Run every day at 9:00 AM
-    python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads daily 09:00
+    python scheduler.py C:\\Users\\YourName\\Downloads daily 09:00
     
     # Run every 60 minutes
-    python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads hourly 60
+    python scheduler.py C:\\Users\\YourName\\Downloads hourly 60
     
     # Run every Monday at 10:00 AM
-    python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads weekly monday 10:00
+    python scheduler.py C:\\Users\\YourName\\Downloads weekly monday 10:00
 
 SCRIPT STRUCTURE:
     1. IMPORTS & SETUP
        - Imports necessary libraries for scheduling and subprocess execution
     
     2. CORE FUNCTIONS
-       - run_file_organizer(): Executes the file organizer process
+       - run_file_organizer(): Executes the organizer process
        - schedule_organizer(): Configures and starts the scheduler
        - main(): Parses command-line arguments and initializes the scheduler
     
@@ -66,7 +66,7 @@ def run_file_organizer(directory_path):
     FUNCTION: run_file_organizer
     
     PURPOSE:
-        Executes the file_organizer.py script as a subprocess for the specified
+        Executes the organizer.py script as a subprocess for the specified
         directory. Captures and logs the output with timestamps.
     
     PARAMETERS:
@@ -74,7 +74,7 @@ def run_file_organizer(directory_path):
     
     FUNCTIONALITY:
         1. Prints timestamp and directory being organized
-        2. Runs file_organizer.py as a subprocess
+        2. Runs organizer.py as a subprocess
         3. Captures stdout and stderr
         4. Checks return code for success/failure
         5. Logs output and any errors with timestamps
@@ -83,11 +83,10 @@ def run_file_organizer(directory_path):
         - Catches and logs any exceptions during execution
         - Reports errors without stopping the scheduler
     """
-    """Run the file organizer for the specified directory"""
     try:
         print(f"\n[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Running file organizer for: {directory_path}")
         result = subprocess.run(
-            [sys.executable, "src/file_organizer.py", directory_path],
+            [sys.executable, "organizer.py", directory_path],
             capture_output=True,
             text=True
         )
@@ -244,14 +243,14 @@ def main():
     if len(sys.argv) < 2:
         # DISPLAY USAGE INFORMATION
         # Shows examples and detailed information about how to use the script
-        print("Usage: python file_organizer_scheduler.py <directory_path> [frequency] [time]")
+        print("Usage: python scheduler.py <directory_path> [frequency] [time]")
         print("\nExamples:")
         print("  # Run every day at 9:00 AM")
-        print("  python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads daily 09:00")
+        print("  python scheduler.py C:\\Users\\YourName\\Downloads daily 09:00")
         print("\n  # Run every hour")
-        print("  python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads hourly 60")
+        print("  python scheduler.py C:\\Users\\YourName\\Downloads hourly 60")
         print("\n  # Run every Monday at 10:00 AM")
-        print("  python file_organizer_scheduler.py C:\\Users\\YourName\\Downloads weekly monday 10:00")
+        print("  python scheduler.py C:\\Users\\YourName\\Downloads weekly monday 10:00")
         print("\nFrequency options:")
         print("  - hourly <minutes>: Run every N minutes (default: 60)")
         print("  - daily <HH:MM>: Run daily at specified time (default: 09:00)")

@@ -2,7 +2,7 @@
 
 This guide explains how to schedule the file organizer to run automatically at regular intervals.
 
-## Method 1: Using Python Scheduler (Cross-Platform)
+## Method 1: Using Python Scheduler (Cross-Platform) ⭐ Recommended
 
 This method uses the `schedule` library and works on Windows, macOS, and Linux.
 
@@ -18,7 +18,7 @@ pip install schedule
 Run the scheduler with the following command:
 
 ```bash
-python src/file_organizer_scheduler.py <directory_path> [frequency] [time]
+python scheduler.py <directory_path> [frequency] [time]
 ```
 
 ### Examples
@@ -26,24 +26,24 @@ python src/file_organizer_scheduler.py <directory_path> [frequency] [time]
 #### Daily Scheduling
 Run every day at 9:00 AM:
 ```bash
-python src/file_organizer_scheduler.py C:\Users\YourName\Downloads daily 09:00
+python scheduler.py C:\Users\YourName\Downloads daily 09:00
 ```
 
 #### Hourly Scheduling
 Run every 60 minutes:
 ```bash
-python src/file_organizer_scheduler.py C:\Users\YourName\Downloads hourly 60
+python scheduler.py C:\Users\YourName\Downloads hourly 60
 ```
 
 Run every 30 minutes:
 ```bash
-python src/file_organizer_scheduler.py C:\Users\YourName\Downloads hourly 30
+python scheduler.py C:\Users\YourName\Downloads hourly 30
 ```
 
 #### Weekly Scheduling
 Run every Monday at 10:00 AM:
 ```bash
-python src/file_organizer_scheduler.py C:\Users\YourName\Downloads weekly monday 10:00
+python scheduler.py C:\Users\YourName\Downloads weekly monday 10:00
 ```
 
 Supported days: monday, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -77,7 +77,7 @@ Supported days: monday, tuesday, wednesday, thursday, friday, saturday, sunday
 4. **Set the Action**
    - Select "Start a program"
    - Program: `C:\Users\YourName\Projects\python-pro-labs\.venv\Scripts\python.exe`
-   - Arguments: `src\file_organizer.py C:\Users\YourName\Downloads`
+   - Arguments: `src\file_organizer\organizer.py C:\Users\YourName\Downloads`
    - Start in: `C:\Users\YourName\Projects\python-pro-labs`
    - Click Next
 
@@ -92,7 +92,7 @@ C:\Users\jithinstalin\Projects\python-pro-labs\.venv\Scripts\python.exe
 
 **Arguments:**
 ```
-src\file_organizer.py C:\Users\jithinstalin\Downloads
+src\file_organizer\organizer.py C:\Users\jithinstalin\Downloads
 ```
 
 **Start in (optional):**
@@ -111,7 +111,7 @@ C:\Users\jithinstalin\Projects\python-pro-labs
 ```batch
 @echo off
 cd /d C:\Users\jithinstalin\Projects\python-pro-labs
-.venv\Scripts\python.exe src\file_organizer.py C:\Users\jithinstalin\Downloads
+.venv\Scripts\python.exe src\file_organizer\organizer.py C:\Users\jithinstalin\Downloads
 pause
 ```
 
@@ -136,17 +136,17 @@ crontab -e
 
 Run daily at 9:00 AM:
 ```cron
-0 9 * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer.py /home/user/Downloads
+0 9 * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer/organizer.py /home/user/Downloads
 ```
 
 Run every hour:
 ```cron
-0 * * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer.py /home/user/Downloads
+0 * * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer/organizer.py /home/user/Downloads
 ```
 
 Run every 30 minutes:
 ```cron
-*/30 * * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer.py /home/user/Downloads
+*/30 * * * * cd /home/user/python-pro-labs && /home/user/python-pro-labs/.venv/bin/python src/file_organizer/organizer.py /home/user/Downloads
 ```
 
 ---
@@ -158,7 +158,7 @@ Run every 30 minutes:
 Logs are printed to console. To save logs to a file, redirect output:
 
 ```bash
-python src/file_organizer_scheduler.py C:\Users\YourName\Downloads daily 09:00 > organizer.log 2>&1
+python scheduler.py C:\Users\YourName\Downloads daily 09:00 > organizer.log 2>&1
 ```
 
 ### With Windows Task Scheduler
@@ -169,7 +169,7 @@ python src/file_organizer_scheduler.py C:\Users\YourName\Downloads daily 09:00 >
 4. Redirect output to a log file by modifying the argument:
 
 ```
-src\file_organizer.py C:\Users\YourName\Downloads >> C:\logs\organizer.log 2>&1
+src\file_organizer\organizer.py C:\Users\YourName\Downloads >> C:\logs\organizer.log 2>&1
 ```
 
 ---
@@ -180,16 +180,19 @@ src\file_organizer.py C:\Users\YourName\Downloads >> C:\logs\organizer.log 2>&1
 - Ensure the Python path is correct
 - Check that the directory paths exist
 - Verify file permissions for read/write
+- Ensure the `schedule` library is installed (for Python scheduler)
 
 ### Task runs but doesn't organize files
 - Check the log file for error messages
 - Ensure the directory path is correct
 - Verify that files exist in the directory
+- Check that files have recognized extensions
 
 ### Task runs but appears frozen
 - The task is likely running in the background (normal)
 - Check the target directory to confirm files were organized
 - View logs to confirm successful execution
+- Press Ctrl+C if using the Python scheduler
 
 ---
 
@@ -201,3 +204,22 @@ src\file_organizer.py C:\Users\YourName\Downloads >> C:\logs\organizer.log 2>&1
 - **Large folders**: Run hourly every 60 minutes
 
 Choose a schedule that works best for your workflow!
+
+---
+
+## Quick Reference
+
+| Method | Platform | Difficulty | Automation |
+|--------|----------|-----------|-----------|
+| Python Scheduler | All | Easy | Manual start |
+| Windows Task Scheduler | Windows | Medium | Automatic ⭐ |
+| Batch Script | Windows | Medium | Automatic ⭐ |
+| Cron | Linux/macOS | Medium | Automatic ⭐ |
+
+---
+
+## Related Documentation
+
+- `README.md` - Module overview and quick start
+- `organizer.py` - Core file organizer script
+- `scheduler.py` - Python scheduler implementation

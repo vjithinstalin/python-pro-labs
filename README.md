@@ -34,10 +34,17 @@ python src/<project_name>.py
 ```
 python-pro-labs/
 │
+├── README.md
+│
 └── src/
     ├── hello_world.py
     ├── calculator.py
-    └── file_organizer.py
+    │
+    └── file_organizer/
+        ├── README.md
+        ├── SCHEDULING_GUIDE.md
+        ├── organizer.py
+        └── scheduler.py
 ```
 
 ## Projects
@@ -105,9 +112,14 @@ Enter second number: 5
 ---
 
 ### 3. File Organizer
-An intelligent file organization tool that automatically categorizes and moves files into folders based on their type.
+An intelligent file organization system with automatic file categorization and scheduling capabilities.
 
-**File:** `src/file_organizer.py`
+**Location:** `src/file_organizer/`
+
+**Module Contents:**
+- `organizer.py` - Main file organization script
+- `scheduler.py` - Automated scheduling wrapper
+- `README.md` - Module-specific documentation
 
 **Features:**
 - 📁 Automatically organizes files into category folders
@@ -116,6 +128,7 @@ An intelligent file organization tool that automatically categorizes and moves f
 - 📊 Provides detailed organization summary
 - 🔒 Permission and error handling
 - 💾 Takes directory path as a command-line parameter
+- ⏰ Optional scheduling for automated runs
 
 **Supported File Categories:**
 - **Images:** jpg, jpeg, png, gif, bmp, svg, webp, ico, tiff
@@ -128,21 +141,31 @@ An intelligent file organization tool that automatically categorizes and moves f
 - **Data:** json, xml, csv, sql, db, yml, yaml
 - **Other:** Files with unrecognized extensions
 
-**Running the Program:**
+**Running Immediate Organization:**
 ```bash
-python src/file_organizer.py <directory_path>
+cd src/file_organizer
+python organizer.py <directory_path>
+```
+
+**Running Scheduled Organization:**
+```bash
+cd src/file_organizer
+python scheduler.py <directory_path> <frequency> <time>
 ```
 
 **Examples:**
 ```bash
-# Organize Downloads folder on Windows
-python src/file_organizer.py C:\Users\YourName\Downloads
+# Organize Downloads folder immediately
+python organizer.py C:\Users\YourName\Downloads
 
-# Organize Documents folder on macOS/Linux
-python src/file_organizer.py /home/user/Documents
+# Organize daily at 9:00 AM
+python scheduler.py C:\Users\YourName\Downloads daily 09:00
 
-# Organize current directory
-python src/file_organizer.py .
+# Organize every hour
+python scheduler.py C:\Users\YourName\Downloads hourly 60
+
+# Organize every Monday at 10:00 AM
+python scheduler.py C:\Users\YourName\Downloads weekly monday 10:00
 ```
 
 **Sample Output:**
@@ -177,6 +200,12 @@ Files by category:
 - 🔄 If a file with the same name exists in the destination folder, it will be renamed with a counter (e.g., filename_1.ext)
 - Hidden files and folders (starting with '.') are skipped
 - Requires appropriate read/write permissions for the target directory
+
+**Module Documentation:**
+See `src/file_organizer/README.md` for detailed module documentation.
+
+**Scheduling Documentation:**
+See `src/file_organizer/SCHEDULING_GUIDE.md` for comprehensive scheduling guide covering Windows Task Scheduler, Linux cron, and Python scheduler methods.
 
 ## Requirements
 

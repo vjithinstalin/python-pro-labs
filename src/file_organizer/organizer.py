@@ -19,17 +19,17 @@ KEY FEATURES:
     - Cross-platform compatibility
 
 USAGE:
-    python file_organizer.py <directory_path>
+    python organizer.py <directory_path>
 
 EXAMPLES:
     # Organize Downloads folder
-    python file_organizer.py C:\\Users\\YourName\\Downloads
+    python organizer.py C:\\Users\\YourName\\Downloads
     
     # Organize current directory
-    python file_organizer.py .
+    python organizer.py .
     
     # Organize specific folder
-    python file_organizer.py /home/user/documents
+    python organizer.py /home/user/documents
 
 SUPPORTED FILE CATEGORIES:
     - Images: jpg, jpeg, png, gif, bmp, svg, webp, ico, tiff
@@ -280,17 +280,17 @@ def main():
         3. Calls organize_files() with provided directory path
     
     USAGE:
-        python file_organizer.py <directory_path>
+        python organizer.py <directory_path>
     """
     import sys
     
     if len(sys.argv) < 2:
         # USAGE INFORMATION
         # Display help text when script is run without arguments
-        print("Usage: python file_organizer.py <directory_path>")
+        print("Usage: python organizer.py <directory_path>")
         print("\nExample:")
-        print("  python file_organizer.py C:\\Users\\YourName\\Downloads")
-        print("  python file_organizer.py /home/user/documents")
+        print("  python organizer.py C:\\Users\\YourName\\Downloads")
+        print("  python organizer.py /home/user/documents")
         sys.exit(1)
     
     directory = sys.argv[1]
