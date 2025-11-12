@@ -8,7 +8,7 @@ Automatically block time on Google Calendar based on schedules defined in an Exc
 
 ## 📝 Description
 
-A utility that reads time blocking data from an Excel file and automatically creates blocked time events in Google Calendar. This is perfect for scheduling focus time, meeting prep, breaks, and other activities that should prevent calendar conflicts.
+A Python utility that reads time blocking data from an Excel file and automatically creates calendar events in your Google Calendar. Perfect for scheduling focus time, meeting prep, breaks, recurring team meetings, and other activities that should prevent calendar conflicts.
 
 ## 🎯 Use Cases
 
@@ -24,7 +24,7 @@ A utility that reads time blocking data from an Excel file and automatically cre
 ### Prerequisites
 
 1. **Python 3.7+** installed
-2. **Google Calendar API** credentials set up
+2. **Google Calendar API** credentials configured (see [OAUTH_SETUP.md](OAUTH_SETUP.md) for detailed instructions)
 3. **Required Python packages** installed
 
 ### Installation
@@ -34,23 +34,19 @@ A utility that reads time blocking data from an Excel file and automatically cre
 pip install openpyxl google-auth-oauthlib google-auth-httplib2 google-api-python-client python-dateutil
 ```
 
-2. Set up Google Calendar API:
-   - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Create a new project
-   - Enable Google Calendar API
-   - Create service account credentials
-   - Download credentials as `credentials.json`
-   - Place `credentials.json` in the `calendar_blocker` folder
+2. Set up Google Calendar API authentication:
+   - Follow the step-by-step guide in [OAUTH_SETUP.md](OAUTH_SETUP.md)
+   - You'll need to create a Google Cloud project and download credentials
 
 3. Create your Excel file with calendar blocks (see format below)
 
 4. Run the script:
 ```bash
 # From calendar_blocker folder
-python calendar_blocker.py schedule.xlsx
+python calendar_blocker_oauth.py schedule.xlsx
 
 # From project root
-python src/calendar_blocker/calendar_blocker.py schedule.xlsx
+python src/calendar_blocker/calendar_blocker_oauth.py schedule.xlsx
 ```
 
 ## 📋 Excel File Format
@@ -132,42 +128,30 @@ Creates a daily recurring lunch block starting Jan 15
 
 ## 💡 Learning Concepts
 
-This project teaches:
+This project demonstrates:
 
-### 1. **Excel File Reading**
+### 1. **Excel File Processing**
    - Using openpyxl to parse Excel files
    - Reading headers and rows
-   - Handling different cell types
+   - Handling different cell types and data validation
 
-### 2. **Google Calendar API**
-   - OAuth 2.0 authentication
-   - Service account credentials
-   - Creating calendar events
+### 2. **Google Calendar API Integration**
+   - OAuth 2.0 authentication flow
+   - Creating calendar events programmatically
    - Setting event properties (color, time, recurrence)
+   - API request/response handling
 
-### 3. **Data Validation**
-   - Validating date formats
-   - Validating time formats
-   - Required field checking
-   - Error reporting
-
-### 4. **Date/Time Handling**
-   - Parsing various date formats
-   - Time string validation
+### 3. **Date/Time Handling**
+   - Parsing multiple date formats
+   - Time string validation and conversion
    - Creating ISO 8601 formatted timestamps
-   - Timezone handling
+   - Timezone management
 
-### 5. **API Integration**
-   - Building API requests
-   - Handling API responses
-   - Error handling for API calls
-   - Batch operations
-
-### 6. **Logging & Error Handling**
-   - Structured logging
-   - Error messages and warnings
-   - Tracking success/failure
-   - Reporting results
+### 4. **Error Handling & Logging**
+   - Structured logging for debugging
+   - Input validation and error reporting
+   - Graceful failure handling
+   - Success/failure tracking
 
 ## 🔧 Advanced Features
 
@@ -189,8 +173,8 @@ The script logs all errors and continues processing remaining events.
 
 ## 🐛 Troubleshooting
 
-### Issue: `credentials.json not found`
-**Solution:** Follow the Google Calendar API setup steps in the Quick Start section.
+### Issue: Authentication errors
+**Solution:** Follow the setup guide in [OAUTH_SETUP.md](OAUTH_SETUP.md)
 
 ### Issue: `openpyxl not installed`
 **Solution:** Run `pip install openpyxl`
@@ -202,7 +186,7 @@ The script logs all errors and continues processing remaining events.
 **Solution:** Ensure times are in HH:MM format (24-hour), e.g., 14:30 for 2:30 PM
 
 ### Issue: Events not appearing
-**Solution:** Check calendar permissions on the service account in Google Calendar settings
+**Solution:** Verify authentication and permissions - see [OAUTH_SETUP.md](OAUTH_SETUP.md)
 
 ## 📊 Output Example
 
@@ -237,11 +221,12 @@ pip install openpyxl google-auth-oauthlib google-auth-httplib2 google-api-python
 
 ## ⚠️ Important Notes
 
-- **Timezone:** Currently set to `America/New_York`. Adjust as needed.
-- **Permissions:** Service account needs read/write access to your calendar
+- **Authentication:** This project uses OAuth 2.0 for secure access to your Google Calendar
+- **Timezone:** Currently set to `America/New_York`. Adjust in the script as needed.
 - **Date Format:** Supports YYYY-MM-DD and MM/DD/YYYY formats
 - **Time Format:** Must be in 24-hour format (HH:MM)
-- **Blocking:** Events are created as opaque (block time from others)
+- **Privacy:** Events are created as opaque (block time from others)
+- **Setup:** Detailed authentication setup instructions are in [OAUTH_SETUP.md](OAUTH_SETUP.md)
 
 ## 🔗 Related Projects
 
